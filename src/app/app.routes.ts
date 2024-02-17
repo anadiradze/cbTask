@@ -1,3 +1,15 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { SlotsComponent } from './components/slots/slots.component';
+
+export const routes: Routes = [
+  {
+    path: 'slots',
+    component: SlotsComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'slots',
+    pathMatch: 'full',
+  },
+];

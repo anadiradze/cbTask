@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --dark-blue: #2a3139;
+  --ultra-blue: #1d242c;
+  --deepest-blue: #1a1e23;
+  --midnight-blue: #272d36;
+  --navy-blue: #252b33;
+  --slate-gray: #454d57;
+  --steel-gray: #6A7787;
+  --vibrant-green: #15af44;
+  --light-sky: #d9e3ef;
+  --pure-white: #ffffff;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul, ol {
+  list-style: none;
+}

@@ -1,0 +1,28 @@
+.navigation {
+  background-color: #2a3139;
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 10px;
+  font-size: 14px;
+  color: var(--steel-gray);
+}
+.navigation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.active {
+  color: var(--pure-white);
+}
+
+.navigation-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

@@ -1,0 +1,10 @@
+<div class="slots-categories">
+  <div *ngFor="let category of filteredCategories$ | async">
+    {{ category.name }}
+  </div>
+</div>
+<div class="slots-providers-wrapper">
+  <div class="slots-providers" *ngIf="getProviders$ | async as providers">
+    <app-dropdown [providers]="providers"></app-dropdown>
+  </div>
+</div>

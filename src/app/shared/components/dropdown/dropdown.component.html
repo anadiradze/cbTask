@@ -1,0 +1,7 @@
+<div *ngFor="let provider of providers.slice(0, numOfItems())">
+  {{ provider.name }}
+</div>
+<div class="dropdown">
+  <span (click)="changeNumOfItems()"> See More</span>
+  <img src="../../../../assets/dropdown/dropdown-arrow.svg" alt="arrow" />
+</div>

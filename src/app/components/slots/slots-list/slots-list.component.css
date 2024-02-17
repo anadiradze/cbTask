@@ -1,0 +1,22 @@
+.slots-categories {
+    display: flex;
+    gap: 25px;
+    background-color: var(--ultra-blue);
+    padding: 8px 16px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .slots-providers-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--midnight-blue);
+    padding: 17px 22px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  .slots-providers {
+    display: flex;
+    gap: 25px;
+  }
+  

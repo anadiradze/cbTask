@@ -1,0 +1,19 @@
+.main-container {
+  display: flex;
+  height: 100vh;
+}
+.top-background {
+  height: 60px;
+  background-color: var(--navy-blue);
+}
+.slots-container {
+  padding-top: 60px;
+  padding: 10px;
+  background-color: var(--deepest-blue);
+}
+
+.slots-list-wrapper {
+  color: white;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
