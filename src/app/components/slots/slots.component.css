@@ -1,10 +1,14 @@
 .main-container {
   display: flex;
-  height: 100vh;
+  height: 100%;
+  background-color: var(--deepest-blue);
 }
 .top-background {
   height: 60px;
   background-color: var(--navy-blue);
+}
+.slots-container-wrapper {
+  width: 100%;
 }
 .slots-container {
   padding-top: 60px;
@@ -16,4 +20,12 @@
   color: white;
   margin-top: 8px;
   margin-bottom: 12px;
+}
+
+.background-image-div {
+  background-image: url("../../../assets/slider/slider.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 400px;
 }

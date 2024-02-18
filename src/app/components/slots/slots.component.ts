@@ -4,13 +4,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SlotsListComponent } from './slots-list/slots-list.component';
 import { SidenavComponent } from '../../shared/components/sidenav/sidenav.component';
-import { DropdownComponent } from '../../shared/components/dropdown/dropdown.component';
 import { SlotCardComponent } from '../../shared/components/slot-card/slot-card.component';
 
 @Component({
   selector: 'app-slots',
   standalone: true,
-  imports: [HttpClientModule, CommonModule,SlotsListComponent,SidenavComponent, DropdownComponent, SlotCardComponent],
+  imports: [HttpClientModule, CommonModule,SlotsListComponent,SidenavComponent, SlotCardComponent],
   templateUrl: './slots.component.html',
   styleUrl: './slots.component.css',
 })

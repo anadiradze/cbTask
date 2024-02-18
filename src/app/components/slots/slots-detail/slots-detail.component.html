@@ -1,1 +1,6 @@
-<p>slots-detail works!</p>
+<div *ngIf="games.length > 0; else noGames" class="slot-card-wrapper">
+  <app-slot-card class="app-slot-card" [games]="games"></app-slot-card >
+</div>
+<ng-template #noGames>
+  <p>No games found</p>
+</ng-template>

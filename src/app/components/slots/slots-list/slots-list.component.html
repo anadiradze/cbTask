@@ -1,10 +1,12 @@
 <div class="slots-categories">
-  <div *ngFor="let category of filteredCategories$ | async">
-    {{ category.name }}
+  <div *ngFor="let categories of filteredCategories$ | async; let id = index">
+    <img [src]="iconPaths[id]" />
+    <a [routerLink]="['./', categories.category]"
+      >{{ categories.name }} {{ categories.totalGames }}</a
+    >
   </div>
 </div>
-<div class="slots-providers-wrapper">
-  <div class="slots-providers" *ngIf="getProviders$ | async as providers">
-    <app-dropdown [providers]="providers"></app-dropdown>
-  </div>
+<div *ngIf="getProviders$ | async as providers">
+  <app-providers [providers]="providers"></app-providers>
 </div>
+<router-outlet></router-outlet>

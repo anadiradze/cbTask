@@ -1,6 +1,6 @@
 //
 import { HttpClient } from '@angular/common/http';
-import { Injectable, WritableSignal, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -12,8 +12,6 @@ import { CategoriesResponse, Category } from '../models/CategoriesResponse';
 export class CategoryService {
   private baseUrl = environment.baseUrl;
 
-  //categoriesSignal: WritableSignal<Category[]> = signal([]);
-
   constructor(private http: HttpClient) {}
 
   getCategories(): Observable<Category[]> {
@@ -22,15 +20,28 @@ export class CategoryService {
         `${this.baseUrl}/v2/slot/categories?include=games`
       )
       .pipe(
-        map((response) =>
-          response.data.filter(
-            (cat) => !cat.category.toLowerCase().includes('mob')
-          )
-        ),
+        map((response) => {
+          console.log(response, 'respof CAT');
+          return response.data.filter((cat) =>
+            ['web:popular', 'web:new_games', 'web:buy_bonus'].includes(
+              cat.category
+            )
+          );
+        }),
         catchError((error) => {
           console.error('Error fetching categories:', error);
           return of([]);
         })
       );
+  }
+
+  getGamesByCategoryId(categoryId: string): Observable<any> {
+    return this.getCategories().pipe(
+      map((categories) => {
+        const category = categories.find((c) => c.category === categoryId);
+        console.log(category, 'category');
+        return category ? category.games : of([]);
+      })
+    );
   }
 }

@@ -1,10 +1,10 @@
-interface ImageSet {
+export interface ImageSet {
   blurhash: string;
   original: string;
   webp: string;
 }
 
-interface Game {
+export interface Game {
   game_id: string;
   name: string;
   provider: string;
@@ -27,6 +27,7 @@ export interface Category {
   name: string;
   order: number;
   games: Game[];
+  totalGames:number
 }
 
 export interface CategoriesResponse {
