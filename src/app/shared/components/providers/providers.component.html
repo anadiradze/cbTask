@@ -4,7 +4,9 @@
       *ngFor="let providers of providers.slice(0, numOfItems())"
       class="providers"
     >
-      <a [routerLink]="['./', providers.provider]">{{ providers.name}}</a>
+      <a [routerLink]="['./', 'providers', providers.provider]">{{
+        providers.name |uppercase
+      }}</a>
     </div>
   </div>
   <div class="dropdown" (click)="changeNumOfItems()">

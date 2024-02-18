@@ -21,7 +21,6 @@ export class CategoryService {
       )
       .pipe(
         map((response) => {
-          console.log(response, 'respof CAT');
           return response.data.filter((cat) =>
             ['web:popular', 'web:new_games', 'web:buy_bonus'].includes(
               cat.category
@@ -39,7 +38,6 @@ export class CategoryService {
     return this.getCategories().pipe(
       map((categories) => {
         const category = categories.find((c) => c.category === categoryId);
-        console.log(category, 'category');
         return category ? category.games : of([]);
       })
     );

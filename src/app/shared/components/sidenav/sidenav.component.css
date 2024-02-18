@@ -17,6 +17,7 @@
 
 .active {
   color: var(--pure-white);
+  position: relative;
 }
 
 .navigation-link {
@@ -25,4 +26,14 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.green-line {
+  position: absolute;
+  top: -12px;
+  left: -12.9px;
+  width: 6px;
+  height: 77px;
+  border-radius: 10px;
+  background-color: var(--vibrant-green);
 }

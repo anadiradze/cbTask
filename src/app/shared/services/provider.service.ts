@@ -6,7 +6,11 @@ import {
   GameProvider,
   GameProvidersResponse,
 } from '../../shared/models/ProviderResponse';
-import { Game, RootObject, SlotData } from '../models/GamesbyProviderIdResponse';
+import {
+  Game,
+  RootObject,
+  SlotData,
+} from '../models/GamesbyProviderIdResponse';
 @Injectable({
   providedIn: 'root',
 })
@@ -25,12 +29,13 @@ export class ProviderService {
       );
   }
 
-  getGamesByProviderId(providerId: string): Observable<Game[]>{
-    return this.http.get<RootObject>(`${this.baseUrl}/v2/slot/providers/${providerId}`).pipe(
-      map((resp: RootObject) => {
-        console.log(resp.data,'resp');
-        return resp.data.games
-      })
-    )
+  getGamesByProviderId(providerId: string): Observable<Game[]> {
+    return this.http
+      .get<RootObject>(`${this.baseUrl}/v2/slot/providers/${providerId}`)
+      .pipe(
+        map((resp: RootObject) => {
+          return resp.data.games;
+        })
+      );
   }
 }

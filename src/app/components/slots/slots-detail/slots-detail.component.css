@@ -8,8 +8,7 @@
 .app-slot-card {
   width: 100%;
   display: grid;
-  /* Adjust the repeat function to use auto-fit or auto-fill with minmax for flexible column sizes */
-  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); /* Example: change 160px to your desired minimum column width */
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
   grid-template-rows: auto;
   gap: 5px;
 }

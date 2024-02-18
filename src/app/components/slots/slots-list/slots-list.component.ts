@@ -7,22 +7,22 @@ import { ProvidersComponent } from '../../../shared/components/providers/provide
 import { Observable } from 'rxjs';
 import { ProviderService } from '../../../shared/services/provider.service';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { TruncatePipe } from "../../../shared/pipes/truncate.pipe";
+import { TruncatePipe } from '../../../shared/pipes/truncate.pipe';
 import { GameProvider } from '../../../shared/models/ProviderResponse';
 
 @Component({
-    selector: 'app-slots-list',
-    standalone: true,
-    templateUrl: './slots-list.component.html',
-    styleUrl: './slots-list.component.css',
-    imports: [
-        HttpClientModule,
-        CommonModule,
-        ProvidersComponent,
-        RouterLink,
-        RouterOutlet,
-        TruncatePipe
-    ]
+  selector: 'app-slots-list',
+  standalone: true,
+  templateUrl: './slots-list.component.html',
+  styleUrl: './slots-list.component.css',
+  imports: [
+    HttpClientModule,
+    CommonModule,
+    ProvidersComponent,
+    RouterLink,
+    RouterOutlet,
+    TruncatePipe,
+  ],
 })
 export class SlotsListComponent implements OnInit {
   constructor(
@@ -37,5 +37,9 @@ export class SlotsListComponent implements OnInit {
     this.getProviders$ = this.providerService.getProvidersList();
   }
 
-  iconPaths=["../../../../assets/lists/star.svg" ,"../../../../assets/lists/new.svg" ,"../../../../assets/lists/buyBonus.svg" ]
+  iconPaths = [
+    '../../../../assets/lists/star.svg',
+    '../../../../assets/lists/new.svg',
+    '../../../../assets/lists/buyBonus.svg',
+  ];
 }

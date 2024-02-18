@@ -23,7 +23,7 @@
 }
 
 .background-image-div {
-  background-image: url("../../../assets/slider/slider.png");
+  background-image: url("/assets/slider/slider.png");
   background-size: cover;
   background-position: center;
   width: 100%;

@@ -27,38 +27,17 @@ export class SlotsDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.route.paramMap
-    //   .pipe(
-    //     switchMap((params) => {
-    //       const id = params.get('id');
-    //       return id ? this.categoryService.getGamesByCategoryId(id) : EMPTY;
-    //     })
-    //   )
-    //   .subscribe((games) => {
-    //     this.games = games;
-    //   });
-
-    // this.route.paramMap
-    //   .pipe(
-    //     switchMap((params) => {
-    //       const id = params.get('id');
-    //       return id ? this.providerService.getGamesByProviderId(id) : EMPTY;
-    //     })
-    //   )
-    //   .subscribe((games: Game[]) => {
-    //     this.games = games;
-    //   });
     this.route.paramMap
       .pipe(
         switchMap((params) => {
           const id = params.get('id');
-          if (id) {
-            // Attempt to fetch games by provider ID, if fails, fetch by category ID
-            return this.providerService.getGamesByProviderId(id).pipe(
-              catchError(() => this.categoryService.getGamesByCategoryId(id))
-            );
+          const collection = params.get('collection');
+          if (collection === 'categories') {
+            return this.categoryService.getGamesByCategoryId(id!);
+          } else if (collection === 'providers') {
+            return this.providerService.getGamesByProviderId(id!);
           }
-          return of([]); // Returns an empty array if no ID is found
+          return of([]);
         })
       )
       .subscribe({
@@ -67,8 +46,8 @@ export class SlotsDetailComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error fetching games:', error);
-          this.games = []; // Handle error scenario, possibly reset games array or show error message
-        }
+          this.games = [];
+        },
       });
   }
 }

@@ -2,7 +2,24 @@
   display: flex;
   gap: 25px;
   background-color: var(--ultra-blue);
-  padding: 8px 16px;
+  padding: 17px 22px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+
+.icon-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.active {
+  color: green;
+}
+
+.games-count {
+  position: relative;
+  top: -10px;
 }

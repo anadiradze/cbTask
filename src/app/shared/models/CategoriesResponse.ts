@@ -27,7 +27,7 @@ export interface Category {
   name: string;
   order: number;
   games: Game[];
-  totalGames:number
+  totalGames: number;
 }
 
 export interface CategoriesResponse {

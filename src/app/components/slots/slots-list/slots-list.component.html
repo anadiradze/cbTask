@@ -1,8 +1,15 @@
 <div class="slots-categories">
-  <div *ngFor="let categories of filteredCategories$ | async; let id = index">
-    <img [src]="iconPaths[id]" />
-    <a [routerLink]="['./', categories.category]"
-      >{{ categories.name }} {{ categories.totalGames }}</a
+  <div
+    class="icon-title-wrapper"
+    *ngFor="let categories of filteredCategories$ | async; let id = index"
+  >
+    <img class="svg-image" [src]="iconPaths[id]" />
+    <a
+      [routerLink]="['./', 'categories', categories.category]"
+      routerLinkActive="active"
+      >{{ categories.name }} <span class="games-count">
+        {{ categories.totalGames }}
+      </span></a
     >
   </div>
 </div>

@@ -7,7 +7,15 @@ export const routes: Routes = [
   {
     path: 'slots',
     component: SlotsComponent,
-    children: [{ path: ':id', component: SlotsDetailComponent }],
+
+    children: [
+      { path: ':collection/:id', component: SlotsDetailComponent },
+      {
+        path: '',
+        redirectTo: 'providers/egt',
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',

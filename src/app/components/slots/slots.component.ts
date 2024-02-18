@@ -1,5 +1,4 @@
-import { Component, OnInit, Signal, inject } from '@angular/core';
-import { CategoryService } from '../../shared/services/category.service';
+import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SlotsListComponent } from './slots-list/slots-list.component';
