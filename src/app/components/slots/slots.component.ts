@@ -36,10 +36,15 @@ export class SlotsComponent {
     this.getProviders$ = this.providerService.getProvidersList();
   }
 
+  activeItemIdentifier: string | null = null;
+
+
   onCategoryClick(event: any) {
     this.router.navigate(['/slots', 'category', event.category]);
+    this.activeItemIdentifier = `category-${event.name}`
   }
   onProviderClick(event: any) {
     this.router.navigate(['/slots', 'provider', event.provider]);
+    this.activeItemIdentifier = `provider-${event.name}`
   }
 }

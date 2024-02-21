@@ -1,16 +1,20 @@
-<div class="slots-providers-wrapper">
-  <div class="slots-providers">
+<div class="slots-list-wrapper" [ngClass]="{ bg: hasBg }">
+  <div class="slots-list">
     <div
       *ngFor="
         let slotNavigator of slotNavigators.slice(0, numOfItems());
         let id = index
       "
+      [class.active]="
+        activeItemIdentifier ===
+        (slotNavigator.category ? 'category-' : 'provider-') +
+          slotNavigator.name
+      "
       class="icon-title-wrapper"
     >
       <img class="svg-image" [src]="slotNavigator.category | imagePaths" />
-      
 
-      <a (click)="itemClick.emit(slotNavigator)"
+      <a (click)="onItemClick(slotNavigator)"
         >{{ slotNavigator.name | uppercase }}
       </a>
       @if(hasGamesCount){
@@ -20,10 +24,10 @@
       }
     </div>
   </div>
-  @if(slotNavigators.length>7){
+  @if(slotNavigators.length>ActivateDropDownNum){
   <div class="dropdown" (click)="changeNumOfItems()">
     <span> See More</span>
-    <img src="../../../../assets/dropdown/dropdown-arrow.svg" alt="arrow" />
+    <img src="assets/dropdown/dropdown-arrow.svg" alt="arrow" />
   </div>
   }
 </div>

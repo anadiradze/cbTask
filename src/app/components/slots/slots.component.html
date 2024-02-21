@@ -3,18 +3,22 @@
   <div class="slots-container">
     <div class="background-image-div"></div>
     <div class="slots-list-wrapper">
-      
       @if(filteredCategories$ | async; as categories){
+
       <app-slots-navigator
+        [hasBg]="true"
         [slotNavigators]="categories"
         [hasGamesCount]="true"
         (itemClick)="onCategoryClick($event)"
+        [activeItemIdentifier]="activeItemIdentifier"
       ></app-slots-navigator>
 
       } @if(getProviders$ | async; as providers){
+
       <app-slots-navigator
         [slotNavigators]="providers"
         (itemClick)="onProviderClick($event)"
+        [activeItemIdentifier]="activeItemIdentifier"
       ></app-slots-navigator>
       }
 

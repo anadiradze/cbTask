@@ -1,34 +1,20 @@
 <nav class="navigation">
   <div class="logo">
     <a class="navigation-link" href="/slots">
-      <img src="../../../../assets/sidenav/logo.svg" alt="Company Logo" />
+      <img src="assets/sidenav/logo.svg" alt="Company Logo" />
     </a>
   </div>
   <ul class="navigation-list">
-    <li class="navigation-item">
-      <a class="navigation-link" href="/slots">
-        <img src="../../../../assets/sidenav/sport.svg" alt="sport" />
-        <span>{{ "sport" | uppercase }}</span>
+    <li
+      class="navigation-item"
+      *ngFor="let item of navigationItems"
+      [class.active]="item.active"
+    >
+      <a class="navigation-link" href="{{ item.link }}">
+        <img [src]="item.icon" [alt]="item.name" />
+        <span>{{ item.name | uppercase }}</span>
       </a>
-    </li>
-    <li class="navigation-item">
-      <a class="navigation-link" href="/slots">
-        <img src="../../../../assets/sidenav/live.svg" alt="live" />
-        <span>{{ "live" | uppercase }}</span>
-      </a>
-    </li>
-    <li class="navigation-item active">
-      <a class="navigation-link" href="/slots">
-        <img src="../../../../assets/sidenav/slot.svg" alt="slots" />
-        <span>{{ "slots" | uppercase }}</span>
-      </a>
-      <div class="green-line"></div>
-    </li>
-    <li class="navigation-item">
-      <a class="navigation-link" href="/slots">
-        <img src="../../../../assets/sidenav/casino.svg" alt="casino" />
-        <span>{{ "casino" | uppercase }}</span>
-      </a>
+      <div class="green-line" *ngIf="item.active"></div>
     </li>
   </ul>
 </nav>

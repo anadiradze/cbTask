@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { GameProvider } from '../../models/ProviderResponse';
 import { RouterLink } from '@angular/router';
 import { TruncatePipe } from '../../pipes/truncate.pipe';
 import { ImagePathsPipe } from '../../pipes/image-paths.pipe';
@@ -22,18 +21,26 @@ import { ImagePathsPipe } from '../../pipes/image-paths.pipe';
   imports: [CommonModule, RouterLink, TruncatePipe, ImagePathsPipe],
 })
 export class SlotsNavigatorComponent {
-  @Input() hasDropDown: boolean = false;
+  activeItemId: string | null = null;
+
+  @Input() ActivateDropDownNum: number = 7;
   @Input() hasGamesCount: boolean = false;
   @Input() slotNavigatorItem!: string;
+  @Input() slotNavigators!: any[];
+  @Input() activeItemIdentifier: string | null = null;
+  @Input() hasBg!: boolean;
   @Output() itemClick = new EventEmitter<any>();
 
-  @Input() slotNavigators!: any[];
+  onItemClick(slotNavigator: any) {
+    this.itemClick.emit(slotNavigator);
+    this.activeItemId = slotNavigator.name;
+  }
+
+  hideItems = signal(true);
 
   numOfItems = computed(() =>
     !this.hideItems() ? this.slotNavigators.length : 7
   );
-
-  hideItems = signal(true);
 
   changeNumOfItems() {
     this.hideItems.update((val) => !val);

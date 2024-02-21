@@ -8,7 +8,7 @@
   cursor: pointer;
   margin-left: auto;
 }
-.slots-providers-wrapper {
+.slots-list-wrapper {
   flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,7 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.slots-providers {
+.slots-list{
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
@@ -33,6 +33,7 @@
   gap: 8px;
   cursor: pointer;
   white-space: nowrap;
+  position: relative;
 }
 
 .games-count {
@@ -40,7 +41,21 @@
   top: -10px;
 }
 
-.slots-categories {
+.icon-title-wrapper.active::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--vibrant-green);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.icon-title-wrapper.active .games-count {
+  color: var(--vibrant-green);
+}
+.bg {
   display: flex;
   gap: 25px;
   background-color: var(--ultra-blue);
