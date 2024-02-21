@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EMPTY, catchError, of, switchMap } from 'rxjs';
+import { EMPTY, Observable, catchError, of, switchMap } from 'rxjs';
 import { CategoryService } from '../../../shared/services/category.service';
 import { CommonModule } from '@angular/common';
 import { SlotCardComponent } from '../../../shared/components/slot-card/slot-card.component';
@@ -18,7 +18,7 @@ import {
   styleUrls: ['./slots-detail.component.css'],
 })
 export class SlotsDetailComponent implements OnInit {
-  games: Game[] | any = [];
+  games$!: Observable<Game[] | any>;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,27 +27,17 @@ export class SlotsDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap
-      .pipe(
-        switchMap((params) => {
-          const id = params.get('id');
-          const collection = params.get('collection');
-          if (collection === 'categories') {
-            return this.categoryService.getGamesByCategoryId(id!);
-          } else if (collection === 'providers') {
-            return this.providerService.getGamesByProviderId(id!);
-          }
-          return of([]);
-        })
-      )
-      .subscribe({
-        next: (games) => {
-          this.games = games;
-        },
-        error: (error) => {
-          console.error('Error fetching games:', error);
-          this.games = [];
-        },
-      });
+    this.games$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        const id = params.get('id');
+        const collection = params.get('collection');
+        if (collection === 'categories') {
+          return this.categoryService.getGamesByCategoryId(id!);
+        } else if (collection === 'providers') {
+          return this.providerService.getGamesByProviderId(id!);
+        }
+        return of([]);
+      })
+    );
   }
 }
