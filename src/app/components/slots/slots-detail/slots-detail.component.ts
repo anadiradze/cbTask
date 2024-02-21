@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EMPTY, Observable, catchError, of, switchMap } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { CategoryService } from '../../../shared/services/category.service';
 import { CommonModule } from '@angular/common';
 import { SlotCardComponent } from '../../../shared/components/slot-card/slot-card.component';
 import { ProviderService } from '../../../shared/services/provider.service';
-import {
-  Game,
-  SlotData,
-} from '../../../shared/models/GamesbyProviderIdResponse';
+import { Game } from '../../../shared/models/GamesbyProviderIdResponse';
 
 @Component({
   selector: 'app-slots-detail',
@@ -30,10 +27,10 @@ export class SlotsDetailComponent implements OnInit {
     this.games$ = this.route.paramMap.pipe(
       switchMap((params) => {
         const id = params.get('id');
-        const collection = params.get('collection');
-        if (collection === 'categories') {
+        const slotNavItem = params.get('slotNavItem');
+        if (slotNavItem === 'category') {
           return this.categoryService.getGamesByCategoryId(id!);
-        } else if (collection === 'providers') {
+        } else if (slotNavItem === 'provider') {
           return this.providerService.getGamesByProviderId(id!);
         }
         return of([]);

@@ -1,18 +1,45 @@
-import { Component} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { SlotsListComponent } from './slots-list/slots-list.component';
-import { SidenavComponent } from '../../shared/components/sidenav/sidenav.component';
-import { SlotCardComponent } from '../../shared/components/slot-card/slot-card.component';
+import { Observable } from 'rxjs';
+import { Category } from '../../shared/models/CategoriesResponse';
+import { GameProvider } from '../../shared/models/ProviderResponse';
+import { CategoryService } from '../../shared/services/category.service';
+import { ProviderService } from '../../shared/services/provider.service';
+import { Router, RouterOutlet } from '@angular/router';
+import { SlotsNavigatorComponent } from '../../shared/components/slots-navigator/slots-navigator.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-slots',
   standalone: true,
-  imports: [HttpClientModule, CommonModule,SlotsListComponent,SidenavComponent, SlotCardComponent],
+  imports: [
+    HttpClientModule,
+    HttpClientModule,
+    CommonModule,
+    SlotsNavigatorComponent,
+    RouterOutlet,
+  ],
   templateUrl: './slots.component.html',
   styleUrl: './slots.component.css',
 })
 export class SlotsComponent {
+  constructor(
+    private categoryService: CategoryService,
+    private providerService: ProviderService,
+    private router: Router
+  ) {}
+  filteredCategories$!: Observable<Category[]>;
+  getProviders$!: Observable<GameProvider[]>;
 
- 
+  ngOnInit(): void {
+    this.filteredCategories$ = this.categoryService.getCategories();
+    this.getProviders$ = this.providerService.getProvidersList();
+  }
+
+  onCategoryClick(event: any) {
+    this.router.navigate(['/slots', 'category', event.category]);
+  }
+  onProviderClick(event: any) {
+    this.router.navigate(['/slots', 'provider', event.provider]);
+  }
 }

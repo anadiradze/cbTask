@@ -1,0 +1,29 @@
+<div class="slots-providers-wrapper">
+  <div class="slots-providers">
+    <div
+      *ngFor="
+        let slotNavigator of slotNavigators.slice(0, numOfItems());
+        let id = index
+      "
+      class="icon-title-wrapper"
+    >
+      <img class="svg-image" [src]="slotNavigator.category | imagePaths" />
+      
+
+      <a (click)="itemClick.emit(slotNavigator)"
+        >{{ slotNavigator.name | uppercase }}
+      </a>
+      @if(hasGamesCount){
+      <span class="games-count">
+        {{ slotNavigator.totalGames }}
+      </span>
+      }
+    </div>
+  </div>
+  @if(slotNavigators.length>7){
+  <div class="dropdown" (click)="changeNumOfItems()">
+    <span> See More</span>
+    <img src="../../../../assets/dropdown/dropdown-arrow.svg" alt="arrow" />
+  </div>
+  }
+</div>

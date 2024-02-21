@@ -23,6 +23,28 @@
   flex-wrap: wrap;
   gap: 25px;
 }
-.providers {
+.slotNavigators {
   white-space: nowrap;
+}
+.icon-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.games-count {
+  position: relative;
+  top: -10px;
+}
+
+.slots-categories {
+  display: flex;
+  gap: 25px;
+  background-color: var(--ultra-blue);
+  padding: 17px 22px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }

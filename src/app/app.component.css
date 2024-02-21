@@ -1,0 +1,8 @@
+.main-container {
+  display: flex;
+  height: 100%;
+  background-color: var(--deepest-blue);
+}
+.outlet-wrapper {
+  flex: 1;
+}

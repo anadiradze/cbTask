@@ -9,10 +9,10 @@ export const routes: Routes = [
     component: SlotsComponent,
 
     children: [
-      { path: ':collection/:id', component: SlotsDetailComponent },
+      { path: ':slotNavItem/:id', component: SlotsDetailComponent },
       {
         path: '',
-        redirectTo: 'providers/egt',
+        redirectTo: 'provider/egt',
         pathMatch: 'full',
       },
     ],

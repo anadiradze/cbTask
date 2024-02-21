@@ -1,13 +1,24 @@
-<div class="main-container">
-  <app-sidenav></app-sidenav>
-  <div class="slots-container-wrapper">
-    <div class="top-background"></div>
-    <div class="slots-container">
-      <div class="background-image-div"></div>
-      <div class="slots-list-wrapper">
-        <app-slots-list></app-slots-list>
-      </div>
-      <app-slot-card></app-slot-card>
+<div class="slots-container-wrapper">
+  <div class="top-background"></div>
+  <div class="slots-container">
+    <div class="background-image-div"></div>
+    <div class="slots-list-wrapper">
+      
+      @if(filteredCategories$ | async; as categories){
+      <app-slots-navigator
+        [slotNavigators]="categories"
+        [hasGamesCount]="true"
+        (itemClick)="onCategoryClick($event)"
+      ></app-slots-navigator>
+
+      } @if(getProviders$ | async; as providers){
+      <app-slots-navigator
+        [slotNavigators]="providers"
+        (itemClick)="onProviderClick($event)"
+      ></app-slots-navigator>
+      }
+
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
