@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Category } from '../../shared/models/CategoriesResponse';
-import { GameProvider } from '../../shared/models/ProviderResponse';
+import { Category } from '../../shared/models/CategoriesResp.model';
+import { GameProvider } from '../../shared/models/GameProviderResp.model';
 import { CategoryService } from '../../shared/services/category.service';
 import { ProviderService } from '../../shared/services/provider.service';
 import { Router, RouterOutlet } from '@angular/router';
@@ -38,13 +38,12 @@ export class SlotsComponent {
 
   activeItemIdentifier: string | null = null;
 
-
-  onCategoryClick(event: any) {
+  onCategoryClick(event: Category) {
     this.router.navigate(['/slots', 'category', event.category]);
-    this.activeItemIdentifier = `category-${event.name}`
+    this.activeItemIdentifier = `category-${event.name}`;
   }
-  onProviderClick(event: any) {
+  onProviderClick(event: GameProvider) {
     this.router.navigate(['/slots', 'provider', event.provider]);
-    this.activeItemIdentifier = `provider-${event.name}`
+    this.activeItemIdentifier = `provider-${event.name}`;
   }
 }

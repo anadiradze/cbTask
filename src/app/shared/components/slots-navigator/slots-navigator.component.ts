@@ -5,13 +5,14 @@ import {
   computed,
   signal,
   EventEmitter,
-  input,
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TruncatePipe } from '../../pipes/truncate.pipe';
 import { ImagePathsPipe } from '../../pipes/image-paths.pipe';
+import { Category } from '../../models/CategoriesResp.model';
+import { GameProvider } from '../../models/GameProviderResp.model';
 
 @Component({
   selector: 'app-slots-navigator',
@@ -26,12 +27,12 @@ export class SlotsNavigatorComponent {
   @Input() ActivateDropDownNum: number = 7;
   @Input() hasGamesCount: boolean = false;
   @Input() slotNavigatorItem!: string;
-  @Input() slotNavigators!: any[];
+  @Input() slotNavigators!: GameProvider[] | Category[];
   @Input() activeItemIdentifier: string | null = null;
   @Input() hasBg!: boolean;
   @Output() itemClick = new EventEmitter<any>();
 
-  onItemClick(slotNavigator: any) {
+  onItemClick(slotNavigator: Category | GameProvider) {
     this.itemClick.emit(slotNavigator);
     this.activeItemId = slotNavigator.name;
   }
@@ -44,5 +45,10 @@ export class SlotsNavigatorComponent {
 
   changeNumOfItems() {
     this.hideItems.update((val) => !val);
+  }
+
+  isActive(item: Category | GameProvider) {
+    const prefix = item.hasOwnProperty('category') ? 'category-' : 'provider-';
+    return this.activeItemIdentifier === `${prefix}${item.name}`;
   }
 }

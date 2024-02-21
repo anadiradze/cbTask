@@ -4,8 +4,11 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { CategoriesResponse, Category } from '../models/CategoriesResponse';
-
+import {
+  CategoriesResponse,
+  Category,
+} from '../models/CategoriesResp.model';
+import {Game} from '../models/Game.model'
 @Injectable({
   providedIn: 'root',
 })
@@ -34,11 +37,15 @@ export class CategoryService {
       );
   }
 
-  getGamesByCategoryId(categoryId: string): Observable<any> {
+  getGamesByCategoryId(categoryId: string): Observable<Game[]> {
     return this.getCategories().pipe(
-      map((categories) => {
+      map((categories: Category[]) => {
         const category = categories.find((c) => c.category === categoryId);
-        return category ? category.games : of([]);
+        return category ? category.games : [];
+      }),
+      catchError((error) => {
+        console.error('Error fetching games by category ID', error);
+        return of([]);
       })
     );
   }

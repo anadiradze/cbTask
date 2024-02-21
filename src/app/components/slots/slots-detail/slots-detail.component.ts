@@ -5,7 +5,8 @@ import { CategoryService } from '../../../shared/services/category.service';
 import { CommonModule } from '@angular/common';
 import { SlotCardComponent } from '../../../shared/components/slot-card/slot-card.component';
 import { ProviderService } from '../../../shared/services/provider.service';
-import { Game } from '../../../shared/models/GamesbyProviderIdResponse';
+import { Game } from '../../../shared/models/Game.model';
+
 
 @Component({
   selector: 'app-slots-detail',
@@ -15,7 +16,7 @@ import { Game } from '../../../shared/models/GamesbyProviderIdResponse';
   styleUrls: ['./slots-detail.component.css'],
 })
 export class SlotsDetailComponent implements OnInit {
-  games$!: Observable<Game[] | any>;
+  games$!: Observable<Game[]>;
 
   constructor(
     private route: ActivatedRoute,

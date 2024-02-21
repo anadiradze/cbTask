@@ -5,12 +5,11 @@ import { Observable, map } from 'rxjs';
 import {
   GameProvider,
   GameProvidersResponse,
-} from '../../shared/models/ProviderResponse';
+} from '../models/GameProviderResp.model';
 import {
-  Game,
   RootObject,
-  SlotData,
-} from '../models/GamesbyProviderIdResponse';
+} from '../models/GamesbyProviderIdResp.model';
+import { Game } from '../models/Game.model';
 @Injectable({
   providedIn: 'root',
 })

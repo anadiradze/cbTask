@@ -6,7 +6,7 @@ import { imageByCategory } from '../../constants/images.enum';
   standalone: true,
 })
 export class ImagePathsPipe implements PipeTransform {
-  transform(value: string): any {
+  transform(value: string): string | undefined {
     let imagepath;
 
     switch (value) {

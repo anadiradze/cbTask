@@ -11,6 +11,8 @@ export interface GameProvider {
   logo: string;
   tags: string[];
   gamesCount: number;
+  totalGames: number;
+  category:string
 }
 
 export interface GameProvidersResponse {

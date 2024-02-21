@@ -2,16 +2,8 @@
   <div class="slots-list">
     @for( slotNavigator of slotNavigators.slice(0, numOfItems()); let id =
     $index; track id ){
-    <div
-      [class.active]="
-        activeItemIdentifier ===
-        (slotNavigator.category ? 'category-' : 'provider-') +
-          slotNavigator.name
-      "
-      class="icon-title-wrapper"
-    >
+    <div [class.active]="isActive(slotNavigator)" class="icon-title-wrapper">
       <img class="svg-image" [src]="slotNavigator.category | imagePaths" />
-
       <a (click)="onItemClick(slotNavigator)"
         >{{ slotNavigator.name | uppercase }}
       </a>
