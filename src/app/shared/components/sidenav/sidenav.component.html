@@ -1,20 +1,18 @@
 <nav class="navigation">
-  <div class="logo">
+  <div>
     <a class="navigation-link" href="/slots">
       <img src="assets/sidenav/logo.svg" alt="Company Logo" />
     </a>
   </div>
   <ul class="navigation-list">
-    <li
-      class="navigation-item"
-      *ngFor="let item of navigationItems"
-      [class.active]="item.active"
-    >
+    @for(item of navigationItems; let i = $index; track i){
+    <li class="navigation-item" [class.active]="item.active">
       <a class="navigation-link" href="{{ item.link }}">
         <img [src]="item.icon" [alt]="item.name" />
         <span>{{ item.name | uppercase }}</span>
       </a>
       <div class="green-line" *ngIf="item.active"></div>
     </li>
+    }
   </ul>
 </nav>

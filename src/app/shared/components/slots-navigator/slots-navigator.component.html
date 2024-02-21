@@ -1,10 +1,8 @@
-<div class="slots-list-wrapper" [ngClass]="{ bg: hasBg }">
+<div class="slots-list-wrapper slots-lits-wrapper-bg" [ngClass]="{ bg: hasBg }">
   <div class="slots-list">
+    @for( slotNavigator of slotNavigators.slice(0, numOfItems()); let id =
+    $index; track id ){
     <div
-      *ngFor="
-        let slotNavigator of slotNavigators.slice(0, numOfItems());
-        let id = index
-      "
       [class.active]="
         activeItemIdentifier ===
         (slotNavigator.category ? 'category-' : 'provider-') +
@@ -23,6 +21,7 @@
       </span>
       }
     </div>
+    }
   </div>
   @if(slotNavigators.length>ActivateDropDownNum){
   <div class="dropdown" (click)="changeNumOfItems()">
