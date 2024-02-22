@@ -4,7 +4,16 @@
   width: 100%;
   height: 100%;
 }
-
+.slot-tag{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background-color: var(--vibrant-green);
+  color: white;
+}
 .slot-card-img-wrapper {
   position: relative;
   transition: background-color 0.3s ease;
@@ -26,6 +35,7 @@
   bottom: 0;
   background-color: transparent;
   transition: background-color 0.3s ease;
+  z-index: 2;
 }
 
 .slot-card-img-wrapper:hover::after {
@@ -45,7 +55,7 @@
   border-radius: 5px;
   transition: opacity 0.3s ease;
   opacity: 0;
-  z-index: 1;
+  z-index: 3;
 }
 
 .slot-card-img-wrapper:hover .play-button {

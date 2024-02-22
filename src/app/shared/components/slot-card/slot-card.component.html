@@ -1,6 +1,9 @@
 @for(game of games; let i = $index; track i;){
 <div [ngClass]="{ 'first-element': i === 0 }">
   <div class="slot-card">
+    @if(game.tags.length>0){
+    <div class="slot-tag">{{ game.tags[0] | titlecase }}</div>
+    }
     <div class="slot-card-img-wrapper">
       <img class="slot-card-img" [src]="game.image" alt="Slot Card Image" />
       <div class="play-button">PLAY</div>
