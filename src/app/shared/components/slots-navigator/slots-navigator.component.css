@@ -17,19 +17,13 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   gap: 25px;
-
-}
-.bg {
-  gap: 25px;
-  background-color: var(--ultra-blue);
-  padding: 17px 22px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.slots-lits-wrapper-bg{
   background-color: var(--midnight-blue);
+
 }
+.changeBg {
+  background-color: var(--ultra-blue);
+}
+
 .slots-list{
   display: flex;
   flex-wrap: wrap;
@@ -66,4 +60,8 @@
 }
 .icon-title-wrapper.active .games-count {
   color: var(--vibrant-green);
+}
+
+.rotate-180{
+  transform: rotate(180deg);
 }

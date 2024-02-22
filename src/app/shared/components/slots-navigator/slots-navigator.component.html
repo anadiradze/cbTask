@@ -1,4 +1,4 @@
-<div class="slots-list-wrapper slots-lits-wrapper-bg" [ngClass]="{ bg: hasBg }">
+<div class="slots-list-wrapper " [ngClass]="{'changeBg': hasBg}">
   <div class="slots-list">
     @for( slotNavigator of slotNavigators.slice(0, numOfItems()); let id =
     $index; track id ){
@@ -18,7 +18,8 @@
   @if(slotNavigators.length>ActivateDropDownNum){
   <div class="dropdown" (click)="changeNumOfItems()">
     <span> See More</span>
-    <img src="assets/dropdown/dropdown-arrow.svg" alt="arrow" />
+    <img src="assets/dropdown/dropdown-arrow.svg" alt="arrow" [ngClass]="{'rotate-180': !hideItems()}" />
+
   </div>
   }
 </div>
