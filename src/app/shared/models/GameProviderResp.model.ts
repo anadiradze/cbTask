@@ -5,14 +5,14 @@ export interface GameProvider {
   iframeH: number;
   vendor: string;
   provider: string;
-  type: 'slot';
+  type: string;
   order: number;
   enabled: boolean;
   logo: string;
   tags: string[];
   gamesCount: number;
   totalGames: number;
-  category:string
+  category: string;
 }
 
 export interface GameProvidersResponse {

@@ -5,6 +5,8 @@ import {
   computed,
   signal,
   EventEmitter,
+  WritableSignal,
+  Signal,
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -37,13 +39,13 @@ export class SlotsNavigatorComponent {
     this.activeItemId = slotNavigator.name;
   }
 
-  hideItems = signal(true);
+  hideItems: WritableSignal<boolean> = signal(true);
 
-  numOfItems = computed(() =>
+  numOfItems: Signal<number> = computed(() =>
     !this.hideItems() ? this.slotNavigators.length : 7
   );
 
-  changeNumOfItems() {
+  changeNumOfItems(): void {
     this.hideItems.update((val) => !val);
   }
 

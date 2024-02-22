@@ -4,11 +4,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {
-  CategoriesResponse,
-  Category,
-} from '../models/CategoriesResp.model';
-import {Game} from '../models/Game.model'
+import { CategoriesResponse, Category } from '../models/CategoriesResp.model';
+import { Game } from '../models/Game.model';
 @Injectable({
   providedIn: 'root',
 })
